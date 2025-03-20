@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinator Dashboard - Sports Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .navbar {
+            background-color: #1a237e;
+        }
+        .dashboard-sidebar {
+            background-color: #f8f9fa;
+            min-height: calc(100vh - 56px);
+            padding: 20px 0;
+            border-right: 1px solid #dee2e6;
+        }
+        .dashboard-content {
+            padding: 20px;
+        }
+        .stats-card {
+            border-left: 5px solid #1a237e;
+            margin-bottom: 20px;
+        }
+        .event-card {
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 5px solid #1a237e;
+        }
+        .notification {
+            border-left: 5px solid #f44336;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="SMS.html">Sports Management System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="notifications-btn">
+                            <i class="fas fa-bell"></i> Notifications
+                            <span class="badge bg-danger">5</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="profile-btn">
+                            <i class="fas fa-user"></i> Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="SMS.html" id="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 dashboard-sidebar">
+                <div class="list-group">
+                    <a href="#dashboard" class="list-group-item list-group-item-action active" data-bs-toggle="tab">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                    <a href="#manage-events" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                        <i class="fas fa-calendar-alt"></i> Manage Events
+                    </a>
+                    <a href="#student-registrations" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                        <i class="fas fa-user-plus"></i> Student Registrations
+                    </a>
+                    <a href="#manage-teams" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                        <i class="fas fa-users"></i> Manage Teams
+                    </a>
+                    <a href="#equipment" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                        <i class="fas fa-volleyball-ball"></i> Equipment Inventory
+                    </a>
+                    <a href="#venue-booking" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                        <i class="fas fa-map-marker-alt"></i> Venue Booking
+                    </a>
+                    <a href="#reports" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                        <i class="fas fa-chart-bar"></i> Reports
+                    </a>
+                    <a href="#announcements" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                        <i class="fas fa-bullhorn"></i> Announcements
+                    </a>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10 dashboard-content">
+                <div class="tab-content">
+                    <!-- Dashboard Overview -->
+                    <div class="tab-pane fade show active" id="dashboard">
+                        <h2 class="mb-4">Welcome, Coordinator!</h2>
+                        
+                        <!-- Stats Cards -->
+                        <div class="row mb-4">
+                            <div class="col-md-3">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Active Events</h5>
+                                        <h2 class="card-text">8</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Total Students</h5>
+                                        <h2 class="card-text">156</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Pending Approvals</h5>
+                                        <h2 class="card-text">12</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Equipment Items</h5>
+                                        <h2 class="card-text">45</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Notifications -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h4>Recent Notifications</h4>
+                                <div class="card notification">
+                                    <div class="card-body">
+                                        <h5 class="card-title">New Event Registration</h5>
+                                        <p class="card-text">15 new registrations for Cricket Tournament pending approval.</p>
+                                        <p class="text-muted mb-0">1 hour ago</p>
+                                    </div>
+                                </div>
+                                <div class="card notification">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Equipment Request</h5>
+                                        <p class="card-text">Basketball team requested new equipment for practice.</p>
+                                        <p class="text-muted mb-0">3 hours ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Quick Actions -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h4>Quick Actions</h4>
+                                <button class="btn btn-primary me-2">Create Event</button>
+                                <button class="btn btn-success me-2">Approve Registrations</button>
+                                <button class="btn btn-info me-2">Generate Report</button>
+                                <button class="btn btn-warning">Make Announcement</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Manage Events -->
+                    <div class="tab-pane fade" id="manage-events">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h3>Manage Events</h3>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEventModal">
+                                <i class="fas fa-plus"></i> Add New Event
+                            </button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Event Name</th>
+                                        <th>Date</th>
+                                        <th>Venue</th>
+                                        <th>Registrations</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Cricket Tournament</td>
+                                        <td>20 June 2024</td>
+                                        <td>Cricket Ground</td>
+                                        <td>45/50</td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info">Edit</button>
+                                            <button class="btn btn-sm btn-warning">Manage</button>
+                                            <button class="btn btn-sm btn-danger">Cancel</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Basketball Championship</td>
+                                        <td>25 June 2024</td>
+                                        <td>Indoor Stadium</td>
+                                        <td>28/40</td>
+                                        <td><span class="badge bg-success">Active</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info">Edit</button>
+                                            <button class="btn btn-sm btn-warning">Manage</button>
+                                            <button class="btn btn-sm btn-danger">Cancel</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Student Registrations -->
+                    <div class="tab-pane fade" id="student-registrations">
+                        <h3>Student Registrations</h3>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Student Name</th>
+                                        <th>Event</th>
+                                        <th>Registration Date</th>
+                                        <th>Category</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>John Doe</td>
+                                        <td>Cricket Tournament</td>
+                                        <td>15 June 2024</td>
+                                        <td>Men's</td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-success">Approve</button>
+                                            <button class="btn btn-sm btn-danger">Reject</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Manage Teams -->
+                    <div class="tab-pane fade" id="manage-teams">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h3>Manage Teams</h3>
+                            <button class="btn btn-primary">Create New Team</button>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Cricket Team</h5>
+                                        <p class="card-text">Members: 15</p>
+                                        <p class="card-text">Captain: John Doe</p>
+                                        <button class="btn btn-info">Manage Members</button>
+                                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#generateCertificateModal">Generate Certificate</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Basketball Team</h5>
+                                        <p class="card-text">Members: 12</p>
+                                        <p class="card-text">Captain: Jane Smith</p>
+                                        <button class="btn btn-info">Manage Members</button>
+                                        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#generateCertificateModal">Generate Certificate</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Certificate Generation Modal -->
+                        <div class="modal fade" id="generateCertificateModal" tabindex="-1">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Generate Certificate</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="certificateForm">
+                                            <div class="mb-3">
+                                                <label for="studentName" class="form-label">Student Name</label>
+                                                <input type="text" class="form-control" id="studentName" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="achievement" class="form-label">Achievement</label>
+                                                <select class="form-select" id="achievement" required>
+                                                    <option value="">Select Achievement...</option>
+                                                    <option value="tournament_winner">Tournament Winner</option>
+                                                    <option value="best_player">Best Player</option>
+                                                    <option value="team_captain">Team Captain</option>
+                                                    <option value="most_valuable">Most Valuable Player</option>
+                                                </select>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="eventName" class="form-label">Event Name</label>
+                                                <input type="text" class="form-control" id="eventName" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="issueDate" class="form-label">Issue Date</label>
+                                                <input type="date" class="form-control" id="issueDate" required>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="remarks" class="form-label">Remarks</label>
+                                                <textarea class="form-control" id="remarks" rows="3"></textarea>
+                                            </div>
+                                        </form>
+                                        <div class="certificate-preview mt-4" style="display: none;">
+                                            <h4>Certificate Preview</h4>
+                                            <div class="border p-4 text-center">
+                                                <h2 class="mb-4">Certificate of Achievement</h2>
+                                                <p class="mb-3">This is to certify that</p>
+                                                <h3 class="student-name mb-3"></h3>
+                                                <p class="mb-3">has successfully achieved</p>
+                                                <h4 class="achievement-text mb-3"></h4>
+                                                <p class="mb-3">in</p>
+                                                <h4 class="event-name mb-4"></h4>
+                                                <div class="row mt-5">
+                                                    <div class="col-6 text-start">
+                                                        <p>Date: <span class="issue-date"></span></p>
+                                                    </div>
+                                                    <div class="col-6 text-end">
+                                                        <p>Sports Coordinator</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-info" id="previewCertificate">Preview</button>
+                                        <button type="button" class="btn btn-primary" id="generateCertificate">Generate & Download</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Equipment Inventory -->
+                    <div class="tab-pane fade" id="equipment">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h3>Equipment Inventory</h3>
+                            <button class="btn btn-primary">Add Equipment</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Item Name</th>
+                                        <th>Category</th>
+                                        <th>Quantity</th>
+                                        <th>Status</th>
+                                        <th>Last Maintained</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Cricket Bats</td>
+                                        <td>Cricket</td>
+                                        <td>20</td>
+                                        <td><span class="badge bg-success">Available</span></td>
+                                        <td>10 June 2024</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info">Update</button>
+                                            <button class="btn btn-sm btn-warning">Maintenance</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Venue Booking -->
+                    <div class="tab-pane fade" id="venue-booking">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h3>Venue Booking</h3>
+                            <button class="btn btn-primary">Book Venue</button>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Venue</th>
+                                        <th>Event</th>
+                                        <th>Date</th>
+                                        <th>Time</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Cricket Ground</td>
+                                        <td>Cricket Tournament</td>
+                                        <td>20 June 2024</td>
+                                        <td>9:00 AM - 5:00 PM</td>
+                                        <td><span class="badge bg-success">Confirmed</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info">Edit</button>
+                                            <button class="btn btn-sm btn-danger">Cancel</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Reports -->
+                    <div class="tab-pane fade" id="reports">
+                        <h3>Reports</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Event Participation Report</h5>
+                                        <canvas id="participationChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Equipment Usage Report</h5>
+                                        <canvas id="equipmentChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Generate Reports</h5>
+                                        <button class="btn btn-primary me-2">Event Report</button>
+                                        <button class="btn btn-primary me-2">Student Report</button>
+                                        <button class="btn btn-primary me-2">Equipment Report</button>
+                                        <button class="btn btn-primary">Financial Report</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Announcements -->
+                    <div class="tab-pane fade" id="announcements">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h3>Announcements</h3>
+                            <button class="btn btn-primary">Create Announcement</button>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <form id="announcementForm">
+                                    <div class="mb-3">
+                                        <label for="title" class="form-label">Title</label>
+                                        <input type="text" class="form-control" id="title" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message" class="form-label">Message</label>
+                                        <textarea class="form-control" id="message" rows="4" required></textarea>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="target" class="form-label">Target Audience</label>
+                                        <select class="form-select" id="target" required>
+                                            <option value="all">All Students</option>
+                                            <option value="cricket">Cricket Team</option>
+                                            <option value="basketball">Basketball Team</option>
+                                        </select>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Send Announcement</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Recent Announcements</h5>
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Title</th>
+                                                <th>Date</th>
+                                                <th>Target</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Practice Schedule Update</td>
+                                                <td>15 June 2024</td>
+                                                <td>Cricket Team</td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-info">Edit</button>
+                                                    <button class="btn btn-sm btn-danger">Delete</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Initialize charts
+        const participationCtx = document.getElementById('participationChart').getContext('2d');
+        new Chart(participationCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Cricket', 'Basketball', 'Athletics', 'Football'],
+                datasets: [{
+                    label: 'Number of Participants',
+                    data: [45, 28, 35, 20],
+                    backgroundColor: '#1a237e'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const equipmentCtx = document.getElementById('equipmentChart').getContext('2d');
+        new Chart(equipmentCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Cricket', 'Basketball', 'Athletics', 'Football'],
+                datasets: [{
+                    data: [30, 25, 20, 25],
+                    backgroundColor: ['#1a237e', '#303f9f', '#3f51b5', '#7986cb']
+                }]
+            },
+            options: {
+                responsive: true
+            }
+        });
+
+        // Handle form submission
+        document.getElementById('announcementForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Announcement sent successfully!');
+            this.reset();
+        });
+
+        // Certificate Preview and Generation
+        document.getElementById('previewCertificate').addEventListener('click', function() {
+            const studentName = document.getElementById('studentName').value;
+            const achievement = document.getElementById('achievement').options[document.getElementById('achievement').selectedIndex].text;
+            const eventName = document.getElementById('eventName').value;
+            const issueDate = new Date(document.getElementById('issueDate').value).toLocaleDateString();
+
+            if (studentName && achievement && eventName && issueDate) {
+                document.querySelector('.certificate-preview').style.display = 'block';
+                document.querySelector('.student-name').textContent = studentName;
+                document.querySelector('.achievement-text').textContent = achievement;
+                document.querySelector('.event-name').textContent = eventName;
+                document.querySelector('.issue-date').textContent = issueDate;
+            } else {
+                alert('Please fill in all required fields');
+            }
+        });
+
+        document.getElementById('generateCertificate').addEventListener('click', function() {
+            const studentName = document.getElementById('studentName').value;
+            const achievement = document.getElementById('achievement').value;
+            const eventName = document.getElementById('eventName').value;
+            const issueDate = document.getElementById('issueDate').value;
+
+            if (studentName && achievement && eventName && issueDate) {
+                // In a real application, this would generate a PDF certificate
+                alert('Certificate generated successfully! Downloading...');
+                
+                // Add certificate to achievements list
+                const achievementsTable = document.querySelector('#student-achievements table tbody');
+                if (achievementsTable) {
+                    const newRow = achievementsTable.insertRow();
+                    newRow.innerHTML = `
+                        <td>${studentName}</td>
+                        <td>${achievement}</td>
+                        <td>${eventName}</td>
+                        <td>${new Date(issueDate).toLocaleDateString()}</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary">View</button>
+                            <button class="btn btn-sm btn-success">Download</button>
+                        </td>
+                    `;
+                }
+
+                // Close modal and reset form
+                document.getElementById('certificateForm').reset();
+                document.querySelector('.certificate-preview').style.display = 'none';
+                bootstrap.Modal.getInstance(document.getElementById('generateCertificateModal')).hide();
+            } else {
+                alert('Please fill in all required fields');
+            }
+        });
+    </script>
+</body>
+</html> 

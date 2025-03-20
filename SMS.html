@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .navbar {
+            background-color: #1a237e;
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://source.unsplash.com/random/1200x800/?sports');
+            background-size: cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .card {
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .footer {
+            background-color: #1a237e;
+            color: white;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+        .event-card {
+            border-left: 5px solid #1a237e;
+        }
+        .notification {
+            border-left: 5px solid #f44336;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="SMS.html">Sports Management System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="SMS.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="register.html">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+                <div class="container">
+                    <h1 class="display-4">Welcome to Sports Management System</h1>
+                    <p class="lead">Manage sports events, track performance, and participate in competitions</p>
+                    <div class="mt-4">
+                    <a href="register.html" class="btn btn-primary btn-lg me-2">Register Now</a>
+                    <a href="events.html" class="btn btn-outline-light btn-lg">View Events</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Notifications Section -->
+        <section class="section py-5">
+            <div class="container">
+                <h2 class="text-center mb-5">Important Notifications</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card notification">
+                            <div class="card-body">
+                                <h5 class="card-title">Registration Deadline</h5>
+                                <p class="card-text">Last date for Cricket Tournament registration is 15 June 2024. Register now!</p>
+                                <p class="text-muted">Posted: 2 days ago</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card notification">
+                            <div class="card-body">
+                                <h5 class="card-title">Team Selection</h5>
+                                <p class="card-text">Basketball team selections will be held on 20 June 2024 at Indoor Stadium.</p>
+                                <p class="text-muted">Posted: 3 days ago</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card notification">
+                            <div class="card-body">
+                                <h5 class="card-title">Venue Change</h5>
+                                <p class="card-text">Athletics practice venue changed to New Sports Complex from tomorrow.</p>
+                                <p class="text-muted">Posted: 4 days ago</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Events Section -->
+        <section class="section py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5">Featured Events</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card event-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Cricket Tournament</h5>
+                                <p class="card-text">Date: 20 June 2024</p>
+                                <p class="card-text">Venue: Cricket Ground</p>
+                                <p class="card-text">Prize Pool: ₹10,000</p>
+                                <a href="login.html" class="btn btn-primary">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card event-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Basketball Championship</h5>
+                                <p class="card-text">Date: 25 June 2024</p>
+                                <p class="card-text">Venue: Indoor Stadium</p>
+                                <p class="card-text">Prize Pool: ₹15,000</p>
+                                <a href="login.html" class="btn btn-primary">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card event-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Athletics Meet</h5>
+                                <p class="card-text">Date: 30 June 2024</p>
+                                <p class="card-text">Venue: Sports Complex</p>
+                                <p class="card-text">Prize Pool: ₹20,000</p>
+                                <a href="login.html" class="btn btn-primary">Register Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <a href="events.html" class="btn btn-outline-primary">View All Events</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Sports Management System</h5>
+                    <p>A comprehensive platform for managing sports events, registrations, and performance tracking.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="SMS.html" class="text-white">Home</a></li>
+                        <li><a href="events.html" class="text-white">Events</a></li>
+                        <li><a href="news.html" class="text-white">News</a></li>
+                        <li><a href="register.html" class="text-white">Register</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <address class="text-white">
+                        123 University Avenue<br>
+                        City, State 12345<br>
+                        Email: sports@university.edu<br>
+                        Phone: (123) 456-7890
+                    </address>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <p class="mb-0">© 2025 Sports Management System. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
+

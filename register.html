@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration - Sports Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .navbar {
+            background-color: #1a237e;
+        }
+        .registration-form {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin: 40px auto;
+        }
+        .form-section {
+            border-bottom: 1px solid #dee2e6;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+        }
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        .profile-upload {
+            width: 150px;
+            height: 150px;
+            border: 2px dashed #dee2e6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+        .profile-upload img {
+            max-width: 100%;
+            max-height: 100%;
+            display: none;
+        }
+        .profile-upload i {
+            font-size: 40px;
+            color: #dee2e6;
+        }
+        .footer {
+            background-color: #1a237e;
+            color: white;
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="SMS.html">Sports Management System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="SMS.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="events.html">Events</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="news.html">News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="register.html">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Registration Form -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="registration-form">
+                    <h2 class="text-center mb-4">Student Registration</h2>
+                    <form id="registrationForm" onsubmit="return validateForm()">
+                        <!-- Personal Information -->
+                        <div class="form-section">
+                            <h4 class="mb-3">Personal Information</h4>
+                            <div class="profile-upload" onclick="document.getElementById('profilePhoto').click()">
+                                <i class="fas fa-camera"></i>
+                                <img id="profilePreview" src="" alt="Profile Preview">
+                            </div>
+                            <input type="file" id="profilePhoto" accept="image/*" style="display: none;">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" value="John" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" value="Doe" required>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="dob" class="form-label">Date of Birth</label>
+                                    <input type="date" class="form-control" id="dob" value="2000-05-15" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="gender" class="form-label">Gender</label>
+                                    <select class="form-select" id="gender" required>
+                                        <option value="male" selected>Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div class="form-section">
+                            <h4 class="mb-3">Contact Information</h4>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" value="manthan05@gmail.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" value="9876543210" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Address</label>
+                                <textarea class="form-control" id="address" rows="3" required>123 Student Housing, University Campus</textarea>
+                            </div>
+                        </div>
+
+                        <!-- Academic Information -->
+                        <div class="form-section">
+                            <h4 class="mb-3">Academic Information</h4>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="studentId" class="form-label">Student ID</label>
+                                    <input type="text" class="form-control" id="studentId" value="2024ST001" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="department" class="form-label">Department</label>
+                                    <select class="form-select" id="department" required>
+                                        <option value="computer_science" selected>Computer Science</option>
+                                        <option value="mechanical">Mechanical Engineering</option>
+                                        <option value="electrical">Electrical Engineering</option>
+                                        <option value="civil">Civil Engineering</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="year" class="form-label">Year of Study</label>
+                                    <select class="form-select" id="year" required>
+                                        <option value="1" selected>First Year</option>
+                                        <option value="2">Second Year</option>
+                                        <option value="3">Third Year</option>
+                                        <option value="4">Fourth Year</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="semester" class="form-label">Current Semester</label>
+                                    <select class="form-select" id="semester" required>
+                                        <option value="1" selected>First</option>
+                                        <option value="2">Second</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sports Information -->
+                        <div class="form-section">
+                            <h4 class="mb-3">Sports Information</h4>
+                            <div class="mb-3">
+                                <label class="form-label">Interested Sports</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="cricket" checked>
+                                    <label class="form-check-label" for="cricket">Cricket</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="basketball" checked>
+                                    <label class="form-check-label" for="basketball">Basketball</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="athletics">
+                                    <label class="form-check-label" for="athletics">Athletics</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="football">
+                                    <label class="form-check-label" for="football">Football</label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="experience" class="form-label">Sports Experience</label>
+                                <textarea class="form-control" id="experience" rows="3">5 years of cricket experience at state level. 3 years of basketball experience at college level.</textarea>
+                            </div>
+                        </div>
+
+                        <!-- Account Security -->
+                        <div class="form-section">
+                            <h4 class="mb-3">Account Security</h4>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" value="manthan" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPassword" value="manthan" required>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="form-section">
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="terms" checked required>
+                                <label class="form-check-label" for="terms">
+                                    I agree to the Terms and Conditions and Privacy Policy
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Sports Management System</h5>
+                    <p>A comprehensive platform for managing sports events, registrations, and performance tracking.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="SMS.html" class="text-white">Home</a></li>
+                        <li><a href="events.html" class="text-white">Events</a></li>
+                        <li><a href="news.html" class="text-white">News</a></li>
+                        <li><a href="login.html" class="text-white">Login</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <address class="text-white">
+                        123 University Avenue<br>
+                        City, State 12345<br>
+                        Email: sports@university.edu<br>
+                        Phone: (123) 456-7890
+                    </address>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <p class="mb-0">© 2025 Sports Management System. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        // Profile photo preview
+        document.getElementById('profilePhoto').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const preview = document.getElementById('profilePreview');
+                    const icon = document.querySelector('.profile-upload i');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block';
+                    icon.style.display = 'none';
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Form validation
+        function validateForm() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match!');
+                return false;
+            }
+
+            // Show success message and redirect
+            alert('Registration successful! Redirecting to login page...');
+            window.location.href = 'login.html';
+            return false;
+        }
+    </script>
+</body>
+</html> 
