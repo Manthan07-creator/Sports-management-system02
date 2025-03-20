@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Sports Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+        }
+        .navbar {
+            background-color: #1a237e;
+        }
+        .dashboard-sidebar {
+            background-color: #f8f9fa;
+            min-height: calc(100vh - 56px);
+            padding: 20px 0;
+            border-right: 1px solid #dee2e6;
+        }
+        .dashboard-content {
+            padding: 20px;
+        }
+        .stats-card {
+            border-left: 5px solid #1a237e;
+            margin-bottom: 20px;
+        }
+        .event-card {
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-left: 5px solid #1a237e;
+        }
+        .notification {
+            border-left: 5px solid #f44336;
+            margin-bottom: 15px;
+        }
+        .achievement-badge {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+        }
+        .achievement-card {
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .achievement-card:hover {
+            transform: translateY(-5px);
+        }
+        .certificate-img {
+            max-height: 200px;
+            object-fit: cover;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+        .btn-group {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="SMS.html">Sports Management System</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="notifications-btn">
+                            <i class="fas fa-bell"></i> Notifications
+                            <span class="badge bg-danger">3</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="profile-btn">
+                            <i class="fas fa-user"></i> Profile
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="SMS.html" id="logout-btn">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 dashboard-sidebar">
+                <div class="list-group">
+                    <a href="#dashboard" class="list-group-item list-group-item-action active" data-bs-toggle="tab">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                    <a href="#my-events" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                        <i class="fas fa-calendar-alt"></i> My Events
+                    </a>
+                    <a href="#register-events" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                        <i class="fas fa-plus-circle"></i> Register for Events
+                    </a>
+                    <a href="#achievements" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                        <i class="fas fa-trophy"></i> Achievements
+                    </a>
+                    <a href="#performance" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                        <i class="fas fa-chart-line"></i> Performance
+                    </a>
+                    <a href="#schedule" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                        <i class="fas fa-clock"></i> Schedule
+                    </a>
+                    <a href="#feedback" class="list-group-item list-group-item-action" data-bs-toggle="tab">
+                        <i class="fas fa-comment"></i> Give Feedback
+                    </a>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10 dashboard-content">
+                <div class="tab-content">
+                    <!-- Dashboard Overview -->
+                    <div class="tab-pane fade show active" id="dashboard">
+                        <h2 class="mb-4">Welcome, Student!</h2>
+                        
+                        <!-- Stats Cards -->
+                        <div class="row mb-4">
+                            <div class="col-md-3">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Events Participated</h5>
+                                        <h2 class="card-text">5</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Upcoming Events</h5>
+                                        <h2 class="card-text">3</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Achievements</h5>
+                                        <h2 class="card-text">7</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card stats-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Performance Score</h5>
+                                        <h2 class="card-text">85%</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Recent Notifications -->
+                        <div class="row mb-4">
+                            <div class="col-12">
+                                <h4>Recent Notifications</h4>
+                                <div class="card notification">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Cricket Tournament Registration Confirmed</h5>
+                                        <p class="card-text">Your registration for the upcoming Cricket Tournament has been confirmed.</p>
+                                        <p class="text-muted mb-0">2 hours ago</p>
+                                    </div>
+                                </div>
+                                <div class="card notification">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Basketball Practice Schedule</h5>
+                                        <p class="card-text">Basketball practice schedule has been updated for next week.</p>
+                                        <p class="text-muted mb-0">1 day ago</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Upcoming Events -->
+                        <div class="row">
+                            <div class="col-12">
+                                <h4>Upcoming Events</h4>
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Event Name</th>
+                                                <th>Date</th>
+                                                <th>Venue</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Cricket Tournament</td>
+                                                <td>20 June 2024</td>
+                                                <td>Cricket Ground</td>
+                                                <td><span class="badge bg-success">Registered</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Basketball Championship</td>
+                                                <td>25 June 2024</td>
+                                                <td>Indoor Stadium</td>
+                                                <td><span class="badge bg-warning">Pending</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- My Events -->
+                    <div class="tab-pane fade" id="my-events">
+                        <h3>My Events</h3>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Event Name</th>
+                                        <th>Date</th>
+                                        <th>Venue</th>
+                                        <th>Category</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Cricket Tournament</td>
+                                        <td>20 June 2024</td>
+                                        <td>Cricket Ground</td>
+                                        <td>Men's</td>
+                                        <td><span class="badge bg-success">Registered</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info">View Details</button>
+                                            <button class="btn btn-sm btn-danger">Cancel</button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Basketball Championship</td>
+                                        <td>25 June 2024</td>
+                                        <td>Indoor Stadium</td>
+                                        <td>Mixed</td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-info">View Details</button>
+                                            <button class="btn btn-sm btn-danger">Cancel</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Register for Events -->
+                    <div class="tab-pane fade" id="register-events">
+                        <h3>Available Events</h3>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="card event-card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Athletics Meet</h5>
+                                        <p class="card-text">Date: 30 June 2024</p>
+                                        <p class="card-text">Venue: Sports Complex</p>
+                                        <p class="card-text">Prize Pool: ₹20,000</p>
+                                        <button class="btn btn-primary">Register Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Add more event cards as needed -->
+                        </div>
+                    </div>
+
+                    <!-- Achievements -->
+                    <div class="tab-pane fade" id="achievements">
+                        <h3>My Achievements</h3>
+                        <div class="row mb-4">
+                            <div class="col-md-4 text-center">
+                                <div class="card achievement-card">
+                                    <div class="card-body">
+                                        <img src="https://i.ibb.co/VvC0vpN/certificate-template.jpg" alt="Cricket Tournament Certificate" class="img-fluid mb-3 certificate-img">
+                                        <h5>Cricket Tournament Winner</h5>
+                                        <p>First Place - June 2023</p>
+                                        <div class="btn-group">
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewCertificateModal" 
+                                                data-certificate="https://i.ibb.co/VvC0vpN/certificate-template.jpg"
+                                                data-title="Cricket Tournament Winner"
+                                                data-date="June 2023">
+                                                <i class="fas fa-eye"></i> View
+                                            </button>
+                                            <a href="https://i.ibb.co/VvC0vpN/certificate-template.jpg" download="Cricket_Tournament_Certificate.jpg" class="btn btn-sm btn-success">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="card achievement-card">
+                                    <div class="card-body">
+                                        <img src="https://i.ibb.co/VvC0vpN/certificate-template.jpg" alt="Basketball Championship Certificate" class="img-fluid mb-3 certificate-img">
+                                        <h5>Basketball Championship</h5>
+                                        <p>Runner Up - March 2023</p>
+                                        <div class="btn-group">
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewCertificateModal"
+                                                data-certificate="https://i.ibb.co/VvC0vpN/certificate-template.jpg"
+                                                data-title="Basketball Championship"
+                                                data-date="March 2023">
+                                                <i class="fas fa-eye"></i> View
+                                            </button>
+                                            <a href="https://i.ibb.co/VvC0vpN/certificate-template.jpg" download="Basketball_Championship_Certificate.jpg" class="btn btn-sm btn-success">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-center">
+                                <div class="card achievement-card">
+                                    <div class="card-body">
+                                        <img src="https://i.ibb.co/VvC0vpN/certificate-template.jpg" alt="Athletics Meet Certificate" class="img-fluid mb-3 certificate-img">
+                                        <h5>Athletics Meet</h5>
+                                        <p>Third Place - January 2023</p>
+                                        <div class="btn-group">
+                                            <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewCertificateModal"
+                                                data-certificate="https://i.ibb.co/VvC0vpN/certificate-template.jpg"
+                                                data-title="Athletics Meet"
+                                                data-date="January 2023">
+                                                <i class="fas fa-eye"></i> View
+                                            </button>
+                                            <a href="https://i.ibb.co/VvC0vpN/certificate-template.jpg" download="Athletics_Meet_Certificate.jpg" class="btn btn-sm btn-success">
+                                                <i class="fas fa-download"></i> Download
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Certificate View Modal -->
+                        <div class="modal fade" id="viewCertificateModal" tabindex="-1">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">View Certificate</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <img id="modalCertificateImg" src="" alt="Certificate" class="img-fluid">
+                                        <h4 id="modalCertificateTitle" class="mt-3"></h4>
+                                        <p id="modalCertificateDate" class="text-muted"></p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <a id="modalDownloadBtn" href="" download="" class="btn btn-primary">
+                                            <i class="fas fa-download"></i> Download Certificate
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performance -->
+                    <div class="tab-pane fade" id="performance">
+                        <h3>Performance Analytics</h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Performance Overview</h5>
+                                        <canvas id="performanceChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Recent Scores</h5>
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Event</th>
+                                                    <th>Score</th>
+                                                    <th>Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Cricket Match</td>
+                                                    <td>85%</td>
+                                                    <td>15 May 2024</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Basketball Game</td>
+                                                    <td>92%</td>
+                                                    <td>10 May 2024</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Schedule -->
+                    <div class="tab-pane fade" id="schedule">
+                        <h3>My Schedule</h3>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Time</th>
+                                        <th>Monday</th>
+                                        <th>Tuesday</th>
+                                        <th>Wednesday</th>
+                                        <th>Thursday</th>
+                                        <th>Friday</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>4:00 PM</td>
+                                        <td>Cricket Practice</td>
+                                        <td>-</td>
+                                        <td>Cricket Practice</td>
+                                        <td>-</td>
+                                        <td>Cricket Practice</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5:00 PM</td>
+                                        <td>-</td>
+                                        <td>Basketball Training</td>
+                                        <td>-</td>
+                                        <td>Basketball Training</td>
+                                        <td>-</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Feedback -->
+                    <div class="tab-pane fade" id="feedback">
+                        <h3>Give Feedback</h3>
+                        <div class="card">
+                            <div class="card-body">
+                                <form id="feedbackForm">
+                                    <div class="mb-3">
+                                        <label for="eventSelect" class="form-label">Select Event</label>
+                                        <select class="form-select" id="eventSelect" required>
+                                            <option value="">Choose an event...</option>
+                                            <option value="cricket">Cricket Tournament</option>
+                                            <option value="basketball">Basketball Championship</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="rating" class="form-label">Rating</label>
+                                        <select class="form-select" id="rating" required>
+                                            <option value="5">Excellent</option>
+                                            <option value="4">Good</option>
+                                            <option value="3">Average</option>
+                                            <option value="2">Below Average</option>
+                                            <option value="1">Poor</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="comments" class="form-label">Comments</label>
+                                        <textarea class="form-control" id="comments" rows="4" required></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Initialize performance chart
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Performance Score',
+                    data: [75, 80, 85, 82, 88, 85],
+                    borderColor: '#1a237e',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+        // Handle form submission
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Feedback submitted successfully!');
+            this.reset();
+        });
+
+        document.querySelectorAll('[data-bs-toggle="modal"]').forEach(button => {
+            button.addEventListener('click', function() {
+                const certificateUrl = this.getAttribute('data-certificate');
+                const title = this.getAttribute('data-title');
+                const date = this.getAttribute('data-date');
+                
+                document.getElementById('modalCertificateImg').src = certificateUrl;
+                document.getElementById('modalCertificateTitle').textContent = title;
+                document.getElementById('modalCertificateDate').textContent = date;
+                document.getElementById('modalDownloadBtn').href = certificateUrl;
+                document.getElementById('modalDownloadBtn').download = title.replace(/\s+/g, '_') + '_Certificate.jpg';
+            });
+        });
+    </script>
+</body>
+</html> 
